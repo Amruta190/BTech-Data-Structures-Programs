@@ -134,9 +134,9 @@ Node* AVLSearchTree :: deletenode(Node* root, int k)
         if(bf(root)==-2)
         {
             if(bf(root->right)<=0)
-                root=RR(p);
+                root=RR(root);
             else 
-                root=RL(p);
+                root=RL(root);
         }
     }
     else if(root->key<k)
@@ -162,9 +162,9 @@ Node* AVLSearchTree :: deletenode(Node* root, int k)
             if(bf(root)==-2)
             {
                 if(bf(root->right)<=0)
-                    root=RR(p);
+                    root=RR(root);
                 else 
-                    root=RL(p);
+                    root=RL(root);
             }
         }
         else

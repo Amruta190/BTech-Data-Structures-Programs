@@ -117,7 +117,7 @@ void BinarySearchTree :: searchnode(Node *root,int k)
         else if(tmp->key>k) 
             tmp=tmp->left;
     }
-    cout<<"\nElement not found\n";
+    cout<<"\nElement "<<k<<" not found\n";
     return;
 }
 int main()

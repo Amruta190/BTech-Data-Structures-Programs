@@ -22,6 +22,7 @@ class AVLSearchTree
     Node* LR(Node*);
     Node* RL(Node*);
     Node* deletenode(Node*,int);
+    
     void inorder(Node*);
     void preorder(Node*);
     void postorder(Node*);
@@ -130,26 +131,30 @@ Node* AVLSearchTree :: deletenode(Node* root, int k)
     if(root==NULL)
         return NULL;
     else if(root->key>k)
-        root->left=deletenode(root->left,k);
-    else if(root->key<k)
-        root->right=deletenode(root->right,k);
-    else
     {
+        root->left=deletenode(root->left,k);
         if(bf(root)==-2)
         {
             if(bf(root->right)<=0)
-                root=RR(p);
+                root=RR(root);
             else 
-                root=RL(p);
+                root=RL(root);
         }
-        else if(bf(root)==2)
+    }
+    else if(root->key<k)
+    {
+        root->right=deletenode(root->right,k);
+        if(bf(root)==2)
         {
             if(bf(root->left)>=0)
                 root=LL(root);
             else 
                 root=LR(root);
         }
-        else if(root->left!=NULL)
+    }
+    else
+    {
+        if(root->left!=NULL)
         {
             p=root->left;
             while(p->right!=NULL)
@@ -159,9 +164,9 @@ Node* AVLSearchTree :: deletenode(Node* root, int k)
             if(bf(root)==-2)
             {
                 if(bf(root->right)<=0)
-                    root=RR(p);
+                    root=RR(root);
                 else 
-                    root=RL(p);
+                    root=RL(root);
             }
         }
         else
