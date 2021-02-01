@@ -9,31 +9,33 @@ int fibonacci(int n, int arr[], int k)
     int a=0,b=1,c=0;
     while(c<n)
     {
+        c=a+b;
         a=b;
         b=c;
-        c=a+b;
     }
-    int offset = -1; 
-    while (c > 1) 
+    int offset=0; 
+    while (c>1) 
     { 
-        int i = min(offset+a, n-1); 
+        int i=min(offset+a, n); 
         if (arr[i] < k) 
         { 
-            c  = b; 
-            b = a; 
-            a = c - b; 
-            offset = i; 
+            c=b; 
+            b=a; 
+            a=c-b; 
+            offset=i; 
         } 
         else if (arr[i] > k) 
         { 
-            c  = a; 
-            b = b - a; 
-            a = c - b; 
+            c=a; 
+            b=b-a; 
+            a=c-b; 
         } 
         else return i; 
     } 
-    if(b && arr[offset+1]==k)
-        return offset+1;
+    if(arr[offset]==k)
+        return offset;
+    else
+        return -1;
 }
 int main()
 {
@@ -42,16 +44,12 @@ int main()
     cin>>n;
     cout<<"Enter the elements in ascending order : ";
     for(i=0;i<n;i++)
-    {
         cin>>arr[i];
-    }
     cout<<"Enter the key value : ";
     cin>>k;
     m=fibonacci(n,arr,k);
-    if(m==1||m>n)
-    {
+    if(m==-1)
         cout<<"Element not found";
-    }
     else
         cout<<"Found at index "<<m;
 }
