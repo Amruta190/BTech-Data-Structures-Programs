@@ -94,52 +94,74 @@ void LinkedList :: print()
 }
 int main()
 {
-    int n,n1;
+    int n,n1,len,i;
     LinkedList l1,l2,l;
-    cout<<"\nInsert 1st linkedlist : ";
-    while(n!=2)
+    cout<<"\nInsert 1st linkedlist : \n";
+    cout<<"Enter length of list : ";
+    cin>>len;
+    cout<<"Enter the elements in ascending order : ";
+    for(i=0;i<len;i++)
     {
-        cout<<"\n1.Insert  2.Stop\n";
-        cin>>n;
-        switch(n)
-        {
-            case 1:
-            {
-                int k;
-                Node *tmp=NULL;
-                cout<<"Enter key value : ";
-                cin>>k;
-                tmp=new Node();
-                tmp->key=k;
-                tmp->next=NULL;
-                l1.insertatend(tmp);
-            }
-                break;
-            case 2:break;
-        }
+        Node *tmp=NULL;
+        tmp=new Node();
+        cin>>tmp->key;
+        tmp->next=NULL;
+        l1.insertatend(tmp);
     }
-    cout<<"\nInsert 2nd linkedlist : ";
-    while(n1!=2)
+    // while(n!=2)
+    // {
+    //     cout<<"\n1.Insert  2.Stop\n";
+    //     cin>>n;
+    //     switch(n)
+    //     {
+    //         case 1:
+    //         {
+    //             int k;
+    //             Node *tmp=NULL;
+    //             cout<<"Enter key value : ";
+    //             cin>>k;
+    //             tmp=new Node();
+    //             tmp->key=k;
+    //             tmp->next=NULL;
+    //             l1.insertatend(tmp);
+    //         }
+    //             break;
+    //         case 2:break;
+    //     }
+    // }
+    cout<<"\nInsert 2nd linkedlist : \n";
+    cout<<"Enter length of list : ";
+    cin>>len;
+    cout<<"Enter the elements in ascending order : ";
+    for(i=0;i<len;i++)
     {
-        cout<<"\n1.Insert  2.Stop\n";
-        cin>>n1;
-        switch(n1)
-        {
-            case 1:
-            {
-                int k;
-                Node *tmp=NULL;
-                cout<<"Enter key value : ";
-                cin>>k;
-                tmp=new Node();
-                tmp->key=k;
-                tmp->next=NULL;
-                l2.insertatend(tmp);
-            }
-                break;
-            case 2:break;
-        }
+        Node *tmp=NULL;
+        tmp=new Node();
+        cin>>tmp->key;
+        tmp->next=NULL;
+        l2.insertatend(tmp);
     }
+    // while(n1!=2)
+    // {
+    //     cout<<"\n1.Insert  2.Stop\n";
+    //     cin>>n1;
+    //     switch(n1)
+    //     {
+    //         case 1:
+    //         {
+    //             int k;
+    //             Node *tmp=NULL;
+    //             cout<<"Enter key value : ";
+    //             cin>>k;
+    //             tmp=new Node();
+    //             tmp->key=k;
+    //             tmp->next=NULL;
+    //             l2.insertatend(tmp);
+    //         }
+    //             break;
+    //         case 2:break;
+    //     }
+    // }
     cout<<"\nLinked list after merging is : ";
     l.merge(l1,l2);
     l.print();
