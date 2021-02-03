@@ -8,19 +8,29 @@ void exchange(int* a, int* b)
 }
 int partition(int a[], int p, int q)
 {
-    int pivot,i,j;
-    pivot=a[q];
-    i=p-1;
-    for(j=p;j<=q-1;j++)
+    int pivot,i,j,flag=0;
+    pivot=a[p];
+    while(flag!=1)
     {
-        if(a[j]<pivot)
+        for(i=p+1;i<=q;i++)
         {
-            i++;
+            if(a[i]>pivot)
+                break;
+        }
+        for(j=q;j>=p+1;j--)
+        {
+            if(a[j]<pivot)
+                break;
+        }
+        if(i<j)
             exchange(&a[i],&a[j]);
+        else if(i>=j)
+        {
+            flag=1;
+            exchange(&a[j],&a[p]);
+            return (j);
         }
     }
-    exchange(&a[i+1],&a[j]);
-    return (i+1);
 }
 void QuickSort(int a[], int p,int q)
 {
