@@ -16,8 +16,8 @@ void selectionSort(int arr[], int n)
         {
             if(arr[j]<arr[k])
             k=j;
-            interchange(&arr[k],&arr[i]);
         }
+        interchange(&arr[k],&arr[i]);
     }
 }
 int main()
