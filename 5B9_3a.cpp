@@ -13,13 +13,13 @@ int main()
     }
     for (i=0;i<n;i++) 
     {
-        for (j=i+1;j<n;j++)
+        for (j=0;j<n-i;j++)
         {
-            if (arr[i] > arr[j]) 
+            if (arr[j] > arr[j+1]) 
             {
-                temp  =  arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                temp  =  arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
             }
         }
     }
