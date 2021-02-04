@@ -12,8 +12,8 @@ class LinkedList
     Node *rear=NULL;
     public:
     void insertatend(Node *);
-    void swap_values(LinkedList);
-    void swap_nodes(LinkedList);
+    void swap_values(LinkedList, int);
+    void swap_nodes(LinkedList, int);
     void print();
 };
 void LinkedList ::insertatend(Node *tmp)
@@ -26,32 +26,42 @@ void LinkedList ::insertatend(Node *tmp)
         rear=tmp;
     }  
 }
-void LinkedList :: swap_values(LinkedList l1)
+void LinkedList :: swap_values(LinkedList l1, int n)
 {
-    Node *i,*j;
-    int temp;
-    for(i=l1.front;i!=NULL;i=i->addr)
+    int temp,k,q,swap=0;
+    for(k=0;k<n;k++)
     {
-        for(j=i->addr;j!=NULL;j=j->addr)
+        Node *i=l1.front;
+        swap=0;
+        for(q=0;q<n-k-1;q++)
         {
+            Node *j=i->addr;
             if(i->key>j->key)
             {
                 temp=i->key;
                 i->key=j->key;
                 j->key=temp;
+                swap=1;
             }
+            i=i->addr;
         }
+        if(swap==0)
+            break;
     }
     cout<<"The sorted list is : \n";
     l1.print();
 }
-void LinkedList :: swap_nodes(LinkedList l1)
+void LinkedList :: swap_nodes(LinkedList l1, int n)
 {
     Node *i,*j,*previ,*prevj,*tmp=NULL;
-    for(i=l1.front;i->addr!=NULL;i=i->addr)
+    int swap=0,k,q;
+    for(k=0;k<n;k++)
     {
-        for(j=i->addr;j!=NULL;j=j->addr)
+        i=l1.front;
+        swap=0;
+        for(q=0;q<n-k-1;q++)
         {
+            j=i->addr;
             if(i->key>j->key)
             {
                 if(i==l1.front)
@@ -115,7 +125,11 @@ void LinkedList :: swap_nodes(LinkedList l1)
                     }
                 }
             }
+            swap=1;
+            i=i->addr;
         }
+        if(swap==0)
+            break;
     }
     cout<<"The sorted list is : \n";
     l1.print();
@@ -155,9 +169,9 @@ int main()
     cin>>ins;
     switch(ins)
     {
-        case 1 :l1.swap_values(l1);
+        case 1 :l1.swap_values(l1,n);
                 break;
-        case 2 :l1.swap_nodes(l1);
+        case 2 :l1.swap_nodes(l1,n);
                 break;
     }
 }
