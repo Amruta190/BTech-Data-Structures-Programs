@@ -97,11 +97,11 @@ int main()
         cin>>k;
         switch(k)
         {
-            case 1:h1.folding();
+            case 1:h1.modular();
                     break;
             case 2:h1.truncation();
                     break;
-            case 3:h1.modular();
+            case 3:h1.folding();
                     break;
             case 4:exit(0);
         }
