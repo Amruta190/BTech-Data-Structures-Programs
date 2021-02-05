@@ -26,12 +26,18 @@ void Hash :: truncation()
     cout<<"\nEnter the key to be hashed (k): ";
     cin>>key;
     cout<<"\nChoose two positions to determine its index value: ";
-    int pos1,pos2,count=0,sum=0,k;
+    int pos1,pos2,count=0,sum=0,k,count1=0,n;
     cin>>pos1>>pos2;
+    n=key;
+    while(n!=0)
+    {
+        n=n/10;
+        count1++;
+    }
     while(key!=0)
     {
         k=key%10;
-        if(count==size-pos1||count==size-pos2)
+        if(count==count1-pos1||count==count1-pos2)
             sum=sum*10+k;
         key=key/10;
         count++;
