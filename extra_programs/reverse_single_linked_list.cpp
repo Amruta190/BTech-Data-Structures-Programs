@@ -27,18 +27,23 @@ void LinkedList ::insertatend(Node *tmp)
 }
 void LinkedList ::reverse()
 {
-    Node *tmp=NULL, *tmp1=NULL;
-    tmp1=rear;
-    while(front!=rear)
+    if(front==NULL)
+        return;
+    else
     {
-        tmp=front;
-        while(tmp->next!=rear)
-            tmp=tmp->next;
-        rear->next=tmp;
-        rear=tmp;
+        Node *tmp=NULL, *tmp1=NULL;
+        tmp1=rear;
+        while(front!=rear)
+        {
+            tmp=front;
+            while(tmp->next!=rear)
+                tmp=tmp->next;
+            rear->next=tmp;
+            rear=tmp;
+        }
+        rear->next=NULL;
+        front=tmp1;
     }
-    rear->next=NULL;
-    front=tmp1;
 }
 void LinkedList :: print()
 {
@@ -57,31 +62,50 @@ void LinkedList :: print()
 }
 int main()
 {
-    int n;
+    int n,i;
     LinkedList l1;
-    while(true)
+    cout<<"Enter no.of nodes : ";
+    cin>>n;
+    if(n>0)
     {
-        cout<<"\nPlease select an option : ";
-        cout<<"\n1.Insert_at_end  2.Reverse and Print  3.Exit\n";
-        cin>>n;
-        switch(n)
+        cout<<"Enter "<<n<<" nodes : ";
+        for(i=0;i<n;i++)
         {
-            case 1:
-            {
-                int k;
-                Node *tmp=NULL;
-                cout<<"Enter key value : ";
-                cin>>k;
-                tmp=new Node();
-                tmp->key=k;
-                tmp->next=NULL;
-                l1.insertatend(tmp);
-            }
-                break;
-            case 2:l1.reverse();
-                    l1.print();
-                    break;
-            case 3:exit(0);
+            Node *tmp=NULL;
+            tmp=new Node();
+            cin>>tmp->key;
+            tmp->next=NULL;
+            l1.insertatend(tmp);
         }
     }
+    cout<<"\nGiven linked list is : \n";
+    l1.print();
+    l1.reverse();
+    cout<<"\nLinked list after reversing is : \n";
+    l1.print();
+    // while(true)
+    // {
+        // cout<<"\nPlease select an option : ";
+        // cout<<"\n1.Insert_at_end  2.Reverse and Print  3.Exit\n";
+        // cin>>n;
+        // switch(n)
+        // {
+            // case 1:
+            // {
+    //             int k;
+    //             Node *tmp=NULL;
+    //             cout<<"Enter key value : ";
+    //             cin>>k;
+    //             tmp=new Node();
+    //             tmp->key=k;
+    //             tmp->next=NULL;
+    //             l1.insertatend(tmp);
+    //         }
+    //             break;
+    //         case 2:l1.reverse();
+    //                 l1.print();
+    //                 break;
+    //         case 3:exit(0);
+    //     }
+    // }
 }
