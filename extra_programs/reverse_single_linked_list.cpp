@@ -83,29 +83,4 @@ int main()
     l1.reverse();
     cout<<"\nLinked list after reversing is : \n";
     l1.print();
-    // while(true)
-    // {
-        // cout<<"\nPlease select an option : ";
-        // cout<<"\n1.Insert_at_end  2.Reverse and Print  3.Exit\n";
-        // cin>>n;
-        // switch(n)
-        // {
-            // case 1:
-            // {
-    //             int k;
-    //             Node *tmp=NULL;
-    //             cout<<"Enter key value : ";
-    //             cin>>k;
-    //             tmp=new Node();
-    //             tmp->key=k;
-    //             tmp->next=NULL;
-    //             l1.insertatend(tmp);
-    //         }
-    //             break;
-    //         case 2:l1.reverse();
-    //                 l1.print();
-    //                 break;
-    //         case 3:exit(0);
-    //     }
-    // }
 }
