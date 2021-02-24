@@ -29,12 +29,112 @@ void LinkedList :: insertatbegin(Node *tmp)
     else
     {
         while(p->addr!=head)
-        {
             p=p->addr;
-        }
         p->addr=tmp;
         tmp->addr=head;
         head=tmp;
+    }
+}
+void LinkedList :: insertatend(Node *tmp)
+{
+    Node *p=head;
+    if(head==NULL)
+    {
+        head=tmp;
+        tmp->addr=head;
+    }
+    else
+    {
+        while(p->addr!=head)
+            p=p->addr;
+        p->addr=tmp;
+        tmp->addr=head;
+    }
+}
+void LinkedList :: insertatposition(Node *tmp)
+{
+    int pos;
+    Node *tmp1=head;
+    cout<<"Please enter the position : ";
+    cin>>pos;
+    int pos1=1;
+    if(head==NULL)
+    {
+        head=tmp;
+        tmp->addr=head;
+    }
+    else
+    {
+        while(pos1!=pos-1)
+        {
+            tmp1=tmp1->addr;
+            pos1++;
+        }
+        tmp->addr=tmp1->addr;
+        tmp1->addr=tmp;
+    }  
+}
+void LinkedList :: deleteatbegin()
+{
+    if(head==NULL)
+        cout<<"No elements available\n";
+    else
+    {
+        Node *tmp=head;
+        while(tmp->addr!=head)
+            tmp=tmp->addr;
+        head=head->addr;
+        tmp->addr=head;
+    }
+}
+void LinkedList ::deleteatend()
+{
+    if(head==NULL)
+        cout<<"No elements available\n";
+    else
+    {
+        Node *tmp=head;
+        while(tmp->addr->addr!=head)
+        {
+            tmp=tmp->addr;
+        }
+        tmp->addr=head;
+    }
+}
+void LinkedList ::deleteatposition()
+{
+    if(head==NULL)
+        cout<<"No elements available\n";
+    else
+    {
+        int pos;
+        cout<<"Please enter the position : ";
+        cin>>pos;
+        Node *tmp=head;
+        int pos1=1;
+        while(pos1!=pos-1)
+        {
+            tmp=tmp->addr;
+            pos1++;
+        }
+        tmp->addr=tmp->addr->addr;
+    }
+}
+void LinkedList :: print()
+{
+    Node *temp=head;
+    if(temp==NULL)
+        cout<<"No nodes available";
+    else if(temp->addr==head)
+        cout<<temp->key;
+    else
+    {
+        while(temp->addr!=head)
+        {
+            cout<<temp->key<<" ";
+            temp=temp->addr;
+        }
+        cout<<temp->key;
     }
 }
 int main()
