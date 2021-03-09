@@ -34,7 +34,7 @@ char Stack :: peek()
 }
 bool isOperator(char ch)
 {
-    if(ch=='+'||ch=='-'||ch=='*'||ch=='/')
+    if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||ch=='^')
         return true;
     else 
         return false;
@@ -47,6 +47,10 @@ int getPriority(char ch)
         case '-':return 2;
         case '*':return 3;
         case '/':return 3;
+        case '^':return 4;
+        case '(':return 1;
+        case '[':return 1;
+        case '{':return 1;
     }
 }
 int main()
@@ -62,26 +66,40 @@ int main()
         {
             if(s1.isEmpty())
                 s1.push(arr[i]);
+            else if(s1.peek()=='('||s1.peek()=='['||s1.peek()=='{')
+                s1.push(arr[i]);
             else
             {
-                if(getPriority(arr[i])<=getPriority(s1.peek()))
+                while(getPriority(arr[i])<=getPriority(s1.peek()) && !s1.isEmpty())
                     cout<<s1.pop();
                 s1.push(arr[i]);
             }
         }
-        // else if(arr[i]=='(')
-        // {
-        //    s1.push(arr[i]);
-        // }
-        // else if(arr[i]==')')
-        // {
-        //     while(s1.peek()!='(')
-        //     {
-        //         s1.push(arr[i]);
-        //         cout<<s1.pop();
-        //     }
-        //     s1.pop();
-        // }
+        else if(arr[i]=='('||arr[i]=='{'||arr[i]=='[')
+        {
+            s1.push(arr[i]);
+        }
+        else if(arr[i]==')'||arr[i]==']'||arr[i]=='}')
+        {
+            if(arr[i]==')')
+            {
+                while(s1.peek()!='(')
+                    cout<<s1.pop();
+                s1.pop();
+            }
+            if(arr[i]==']')
+            {
+                while(s1.peek()!='[')
+                    cout<<s1.pop();
+                s1.pop();
+            }
+            if(arr[i]=='}')
+            {
+                while(s1.peek()!='{')
+                    cout<<s1.pop();
+                s1.pop();
+            }
+        }
         else
         {
             cout<<arr[i];

@@ -1,5 +1,4 @@
 #include<iostream>
-#include"StackAsHeader.cpp"
 using namespace std;
 #define max 100
 class Stack

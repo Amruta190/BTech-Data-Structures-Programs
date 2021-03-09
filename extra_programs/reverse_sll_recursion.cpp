@@ -8,11 +8,11 @@ class Node
 };
 class LinkedList
 {
+    public:
     Node *front=NULL;
     Node *rear=NULL;
-    public:
     void insertatend(Node *);
-    void reverse();
+    Node* reverse(Node *);
     void print();
 };
 void LinkedList ::insertatend(Node *tmp)
@@ -25,25 +25,14 @@ void LinkedList ::insertatend(Node *tmp)
         rear=tmp;
     }  
 }
-void LinkedList ::reverse()
+Node* LinkedList ::reverse(Node *head)
 {
-    if(front==NULL)
-        return;
-    else
-    {
-        Node *tmp=NULL, *tmp1=NULL;
-        tmp1=rear;
-        while(front!=rear)
-        {
-            tmp=front;
-            while(tmp->next!=rear)
-                tmp=tmp->next;
-            rear->next=tmp;
-            rear=tmp;
-        }
-        rear->next=NULL;
-        front=tmp1;
-    }
+    if(head==NULL||head->next==NULL)
+        return head;
+    Node *tmp=reverse(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return tmp;
 }
 void LinkedList :: print()
 {
@@ -85,7 +74,8 @@ int main()
     }
     cout<<"\nGiven linked list is : \n";
     l1.print();
-    l1.reverse();
+    l1.rear=l1.front;
+    l1.front=l1.reverse(l1.front);
     cout<<"\nLinked list after reversing is : \n";
     l1.print();
 }
