@@ -103,7 +103,7 @@ int main()
         cout<<"\n"<<" "<<d.source<<"\t\t";
         cout<<d.names[i]<<"\t";
         cout<<"\t"<<d.dis[i]<<"\t\t";
-        cout<<"1";
+        cout<<d.source;
         j=i;k=1;arr[0]=j;
         while(d.predecesser[j]!=1)
         {
